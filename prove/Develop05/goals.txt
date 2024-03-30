@@ -1,0 +1,4 @@
+660
+SimpleGoal:jajajaj,jejejeje,200
+ChecklistGoal:hjhjh,gjgjgj,20,1,3,3
+EternalGoal:nmnmnm,nknknkn,200
