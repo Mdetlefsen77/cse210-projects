@@ -1,16 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class BookManager
 {
-    // List of books in the library
     private List<Book> books;
-    // Constructor
+
     public BookManager()
     {
         books = new List<Book>();
     }
-    // Method to add a book to the library
+
     public void AddBook(Book book)
     {
         books.Add(book);
     }
-    // Other methods for searching, removing books, etc.
+
+    public bool RemoveBook(Book book)
+    {
+        return books.Remove(book);
+    }
+
+    public List<Book> SearchByTitle(string title)
+    {
+        return books.Where(book => book.Title.Equals(title, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
+
+    public List<Book> SearchByAuthor(string author)
+    {
+        return books.Where(book => book.Author.Equals(author, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
+
+    public List<Book> SearchByGenre(string genre)
+    {
+        return books.Where(book => book.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
+
+    public int TotalBooks => books.Count;
 }

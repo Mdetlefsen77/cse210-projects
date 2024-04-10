@@ -1,11 +1,8 @@
 public class User
 {
-    // Properties of the user
-    public string Name { get; set; }
-    public string Email { get; set; }
-    // Other properties...
+    public string Name { get; }
+    public string Email { get; }
 
-    // Constructor
     public User(string name, string email)
     {
         Name = name;

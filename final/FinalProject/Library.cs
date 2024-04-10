@@ -1,27 +1,58 @@
-using System.Collections.Generic;
-
 public class Library
 {
-    // List of books in the library
     private List<Book> books;
 
-    // Constructor
     public Library()
     {
         books = new List<Book>();
     }
 
-    // Method to add a book to the library
     public void AddBook(Book book)
     {
         books.Add(book);
     }
 
-    // Method to get all books in the library
-    public List<Book> GetBooks()
+    public List<Book> SearchBooksByTitle(string title)
+    {
+        List<Book> foundBooks = new List<Book>();
+        foreach (var book in books)
+        {
+            if (book.Title.Contains(title, StringComparison.OrdinalIgnoreCase))
+            {
+                foundBooks.Add(book);
+            }
+        }
+        return foundBooks;
+    }
+
+    public List<Book> SearchBooksByAuthor(string author)
+    {
+        List<Book> foundBooks = new List<Book>();
+        foreach (var book in books)
+        {
+            if (book.Author.Contains(author, StringComparison.OrdinalIgnoreCase))
+            {
+                foundBooks.Add(book);
+            }
+        }
+        return foundBooks;
+    }
+
+    public List<Book> SearchBooksByGenre(string genre)
+    {
+        List<Book> foundBooks = new List<Book>();
+        foreach (var book in books)
+        {
+            if (book.Genre.Contains(genre, StringComparison.OrdinalIgnoreCase))
+            {
+                foundBooks.Add(book);
+            }
+        }
+        return foundBooks;
+    }
+
+    public List<Book> GetAllBooks()
     {
         return books;
     }
-
-    // Other methods for searching, removing books, etc.
 }
