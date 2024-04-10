@@ -1,12 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class BookRecommender
 {
-    // Method to recommend books based on user preferences
+    private Library library;
+
+    // Constructor
+    public BookRecommender(Library library)
+    {
+        this.library = library;
+    }
+
+    // Método para recomendar libros basados en el historial de lectura del usuario
     public List<Book> RecommendBooks(Reader reader)
     {
-        // Logic for recommending books based on the user's reading history
-        // This is a sample implementation; you can adapt it as needed
-        List<Book> recommendedBooks = new List<Book>();
-        // Recommendation logic...
-        return recommendedBooks;
+        // Obtener todos los libros de la biblioteca
+        List<Book> allBooks = library.GetAllBooks();
+
+        // Obtener los libros leídos por el usuario
+        List<Book> readBooks = reader.GetReadBooks();
+
+        // Calcular la popularidad de los libros no leídos
+        var unreadBooks = allBooks.Where(book => !readBooks.Contains(book))
+                                  .OrderByDescending(book => book.Popularity)
+                                  .Take(5)
+                                  .ToList();
+
+        return unreadBooks;
     }
 }
